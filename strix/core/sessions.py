@@ -54,12 +54,12 @@ async def strip_all_images_from_session(session: Session) -> bool:
     if not changed:
         return False
 
-    original = cast("list[TResponseInputItem]", list(items))
+    rebuilt_items = cast("list[TResponseInputItem]", rebuilt)
     await session.clear_session()
     try:
-        await session.add_items(cast("list[TResponseInputItem]", rebuilt))
+        await session.add_items(rebuilt_items)
     except Exception:
         with contextlib.suppress(Exception):
-            await session.add_items(original)
+            await session.add_items(rebuilt_items)
         raise
     return True
