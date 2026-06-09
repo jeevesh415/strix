@@ -391,7 +391,7 @@ async def _run_cycle(  # noqa: PLR0912, PLR0915
                 if stripped:
                     image_strips += 1
                     logger.info(
-                        "Stripped latest image from %s session after rejection; retrying (%d)",
+                        "Stripped images from %s session after rejection; retrying (%d)",
                         agent_id,
                         image_strips,
                     )
